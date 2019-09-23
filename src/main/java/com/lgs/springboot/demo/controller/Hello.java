@@ -10,8 +10,10 @@ public class Hello {
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     @ResponseBody
     public String SayHello(){
-		 System.out.println("hello word11");
-		 System.out.println("hello word2");
+		System.out.println("hello word11");
+		System.out.println("hello word2");
+        System.out.print("1");
+        System.out.println("hello word2");
         return "Hello,SpringBoot!";
     }
 
