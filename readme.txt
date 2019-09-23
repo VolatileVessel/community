@@ -14,4 +14,8 @@ git add . 和 git commit -m "备注" ， 可以合并成为git commit -a -m "备
  15248668333
  
  
+ 
  add demo readme.txt 
+ 
+ add community readme.txt 
+ 
