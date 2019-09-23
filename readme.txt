@@ -16,12 +16,3 @@ git add . 和 git commit -m "备注" ， 可以合并成为git commit -a -m "备
 add community readme.txt
 
 add demo readme.txt
- 
-git 版本冲突，解决。
-《《《 HEAD
-冲突模块
-======
-冲突模块
->>>> sasdfsdfwerwqerwe
-,git pull 手动解决完冲突后
-重新提交代码
