@@ -38,9 +38,9 @@ add demo readme.txt
 　　同时记住,解决了之后,要add 和 commit 最后push.为保证万无一失,最后在冲突都解决之后,重启项目；
 
 　　保证至少不会有立即奔溃的现象发生.然后才去提交,push.
-Community demotest
-Community demotest
-Community demotest
-Community demotest
-Community demotest
-Community demotest
+Community demotest1
+Community demotest2
+Community demotest3
+Community demotest4
+Community demotest5
+Community demotest6
