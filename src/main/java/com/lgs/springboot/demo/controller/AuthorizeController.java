@@ -36,7 +36,5 @@ public class AuthorizeController {
         return "index";
     }
 
-    public static void main(String[] args) {
 
-    }
 }
