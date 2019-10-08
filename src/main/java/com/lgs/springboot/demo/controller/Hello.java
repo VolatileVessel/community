@@ -21,7 +21,7 @@ public class Hello {
 		city.setProvinceId(11L);
         request.setAttribute(city.getCityName(),"cityName");
 
-        return "index";
+        return "hellotest";
     }
 
 }
