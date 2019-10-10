@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 // mapper 接口类扫描包配置
-@MapperScan("com.lgs.springboot.demo.dao")
+//@MapperScan("com.lgs.springboot.demo.mapper")
 public class DemoApplication {
 
     public static void main(String[] args) {
