@@ -2,10 +2,15 @@ package com.lgs.springboot.demo.service;
 
 import com.lgs.springboot.demo.DTO.PaginationDTO;
 import com.lgs.springboot.demo.DTO.QuestionDTO;
+import com.lgs.springboot.demo.exception.CustomizeErrorCode;
+import com.lgs.springboot.demo.exception.CustomizeException;
+import com.lgs.springboot.demo.exception.ICustomizeErrorCode;
 import com.lgs.springboot.demo.mapper.QuestionMapper;
 import com.lgs.springboot.demo.mapper.UserMapper;
 import com.lgs.springboot.demo.model.Question;
+import com.lgs.springboot.demo.model.QuestionExample;
 import com.lgs.springboot.demo.model.User;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +30,7 @@ public class QuestionService {
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
         //总条数
-        Integer totalCount = questionMapper.count();
+        Integer totalCount = (int)questionMapper.countByExample(new QuestionExample());
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
         } else {
@@ -41,7 +46,8 @@ public class QuestionService {
         paginationDTO.setPagination(totalPage, page);
         Integer offset = (page - 1) * size;
         //questions 去和数据库一样的表中查询数据
-        List<Question> questions = questionMapper.list(offset, size);
+        //List<Question> questions = questionMapper.list(offset, size);
+        List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
         //questionDTOS 需要管理用户的信息，以便于取到用户头像
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
@@ -63,7 +69,10 @@ public class QuestionService {
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
         //总条数
-        Integer totalCount = questionMapper.countByUserId(userId);
+       // Integer totalCount = questionMapper.countByUserId(userId);
+        QuestionExample questionexample = new QuestionExample();
+        questionexample.createCriteria().andCreatorEqualTo(userId);
+        Integer totalCount=(int) questionMapper.countByExample(questionexample);
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
         } else {
@@ -80,7 +89,10 @@ public class QuestionService {
 
         Integer offset = (page - 1) * size;
         //questions 去和数据库一样的表中查询数据
-        List<Question> questions = questionMapper.listByUserId(userId,offset,size);
+      //  List<Question> questions = questionMapper.listByUserId(userId,offset,size);
+        QuestionExample example = new QuestionExample();
+        example.createCriteria().andCreatorEqualTo(userId);
+        List<Question> questions = questionMapper.selectByExampleWithBLOBsWithRowbounds(example, new RowBounds(offset, size));
         //questionDTOS 需要管理用户的信息，以便于取到用户头像
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
@@ -97,7 +109,11 @@ public class QuestionService {
     }
 
     public QuestionDTO findById(Integer id) {
-        Question question=questionMapper.finById(id);
+       // Question question=questionMapper.finById(id);
+        Question question = questionMapper.selectByPrimaryKey(id);
+        if (question == null) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
         User user=userMapper.selectByPrimaryKey(question.getCreator());
@@ -110,11 +126,19 @@ public class QuestionService {
             //创建,插入
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
-            questionMapper.insert(question);
+            questionMapper.insertSelective(question);
         }else {
             //保存
-            question.setGmtModified(question.getGmtCreate());
-            questionMapper.update(question);
+           // Question question1 = questionMapper.selectByPrimaryKey(question.getId());
+            Question updateQuestion = new Question();
+            updateQuestion.setTitle(question.getTitle());
+            updateQuestion.setDescription(question.getDescription());
+            updateQuestion.setTag(question.getTag());
+            updateQuestion.setGmtModified(System.currentTimeMillis());
+            QuestionExample example = new QuestionExample();
+            example.createCriteria().andIdEqualTo(question.getId());
+             questionMapper.updateByExampleSelective(updateQuestion, example);
+
         }
     }
 
