@@ -5,6 +5,7 @@ import com.lgs.springboot.demo.DTO.QuestionDTO;
 import com.lgs.springboot.demo.exception.CustomizeErrorCode;
 import com.lgs.springboot.demo.exception.CustomizeException;
 import com.lgs.springboot.demo.exception.ICustomizeErrorCode;
+import com.lgs.springboot.demo.mapper.QuestionExtMapper;
 import com.lgs.springboot.demo.mapper.QuestionMapper;
 import com.lgs.springboot.demo.mapper.UserMapper;
 import com.lgs.springboot.demo.model.Question;
@@ -24,6 +25,8 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
     public PaginationDTO list(Integer page, Integer size) {
         //paginationDTO 针对分页的DTO
@@ -143,4 +146,19 @@ public class QuestionService {
     }
 
 
+    public void incView(Integer id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        //返回int 类型，更新成功。
+        questionExtMapper.incView(question);
+
+        //阅读数加1
+        /*Question question = questionMapper.selectByPrimaryKey(id);
+        Question question = new Question();
+        question.setViewCount(question.getViewCount()+1);
+        QuestionExample example = new QuestionExample();
+        example.createCriteria().andIdEqualTo(id);
+        questionMapper.updateByExampleSelective(question, example);*/
+    }
 }
