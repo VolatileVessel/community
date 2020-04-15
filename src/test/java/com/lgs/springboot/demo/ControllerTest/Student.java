@@ -1,4 +1,4 @@
-package com.lgs.springboot.demo.controller;
+package com.lgs.springboot.demo.ControllerTest;
 
 public class Student {
     private String name;

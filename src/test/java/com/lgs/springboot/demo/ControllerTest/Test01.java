@@ -1,6 +1,5 @@
-package com.lgs.springboot.demo.controller;
+package com.lgs.springboot.demo.ControllerTest;
 
-import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

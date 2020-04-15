@@ -1,4 +1,4 @@
-package com.lgs.springboot.demo.controller;
+package com.lgs.springboot.demo.ControllerTest;
 
 public class enumtest {
     public static void main(String[] args) {

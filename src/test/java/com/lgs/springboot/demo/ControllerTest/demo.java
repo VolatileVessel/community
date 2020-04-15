@@ -1,4 +1,4 @@
-package com.lgs.springboot.demo.controller;
+package com.lgs.springboot.demo.ControllerTest;
 
 import java.text.DateFormat;
 import java.text.ParseException;
