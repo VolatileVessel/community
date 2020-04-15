@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * OKHttp
+ * @Componet 实例化   一个类，初始化
+ */
 @Component
 public class GithubProvider {
 

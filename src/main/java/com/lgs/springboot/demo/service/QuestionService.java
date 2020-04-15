@@ -113,7 +113,9 @@ public class QuestionService {
             questionMapper.insert(question);
         }else {
             //保存
-            question.setGmtModified(question.getGmtCreate());
+            Question question1 = questionMapper.finById(question.getId());
+            question.setGmtModified(question1.getGmtCreate());
+            //question.setGmtCreate(System.currentTimeMillis());
             questionMapper.update(question);
         }
     }
