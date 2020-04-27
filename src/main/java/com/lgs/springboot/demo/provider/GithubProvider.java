@@ -1,8 +1,8 @@
 package com.lgs.springboot.demo.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.lgs.springboot.demo.DTO.AccessTokenDTO;
-import com.lgs.springboot.demo.DTO.GithubUser;
+import com.lgs.springboot.demo.dto.AccessTokenDTO;
+import com.lgs.springboot.demo.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 

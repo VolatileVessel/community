@@ -1,7 +1,6 @@
 package com.lgs.springboot.demo.controller;
 
-import com.lgs.springboot.demo.DTO.QuestionDTO;
-import com.lgs.springboot.demo.mapper.QuestionMapper;
+import com.lgs.springboot.demo.dto.QuestionDTO;
 import com.lgs.springboot.demo.model.Question;
 import com.lgs.springboot.demo.model.User;
 import com.lgs.springboot.demo.service.QuestionService;

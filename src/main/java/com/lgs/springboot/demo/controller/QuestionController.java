@@ -1,6 +1,6 @@
 package com.lgs.springboot.demo.controller;
 
-import com.lgs.springboot.demo.DTO.QuestionDTO;
+import com.lgs.springboot.demo.dto.QuestionDTO;
 import com.lgs.springboot.demo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

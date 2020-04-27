@@ -1,7 +1,7 @@
 package com.lgs.springboot.demo.controller;
 
-import com.lgs.springboot.demo.DTO.AccessTokenDTO;
-import com.lgs.springboot.demo.DTO.GithubUser;
+import com.lgs.springboot.demo.dto.AccessTokenDTO;
+import com.lgs.springboot.demo.dto.GithubUser;
 import com.lgs.springboot.demo.mapper.UserMapper;
 import com.lgs.springboot.demo.model.User;
 import com.lgs.springboot.demo.provider.GithubProvider;

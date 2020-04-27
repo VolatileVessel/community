@@ -5,11 +5,20 @@ public enum  CustomizeErrorCode implements ICustomizeErrorCode{
 
     @Override
     public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public Integer getCode() {
         return null;
     }
-    private String message;
 
-    CustomizeErrorCode(String message) {
+
+    private String message;
+    private  Integer code;
+
+    CustomizeErrorCode(Integer code, String message) {
         this.message = message;
+        this.code = code;
     }
 }

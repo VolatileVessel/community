@@ -1,6 +1,6 @@
 package com.lgs.springboot.demo.controller;
 
-import com.lgs.springboot.demo.DTO.PaginationDTO;
+import com.lgs.springboot.demo.dto.PaginationDTO;
 import com.lgs.springboot.demo.model.User;
 import com.lgs.springboot.demo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;

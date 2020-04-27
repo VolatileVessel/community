@@ -1,4 +1,4 @@
-package com.lgs.springboot.demo.DTO;
+package com.lgs.springboot.demo.dto;
 
 import lombok.Data;
 

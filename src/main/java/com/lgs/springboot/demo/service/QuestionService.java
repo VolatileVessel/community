@@ -1,10 +1,9 @@
 package com.lgs.springboot.demo.service;
 
-import com.lgs.springboot.demo.DTO.PaginationDTO;
-import com.lgs.springboot.demo.DTO.QuestionDTO;
+import com.lgs.springboot.demo.dto.PaginationDTO;
+import com.lgs.springboot.demo.dto.QuestionDTO;
 import com.lgs.springboot.demo.exception.CustomizeErrorCode;
 import com.lgs.springboot.demo.exception.CustomizeException;
-import com.lgs.springboot.demo.exception.ICustomizeErrorCode;
 import com.lgs.springboot.demo.mapper.QuestionExtMapper;
 import com.lgs.springboot.demo.mapper.QuestionMapper;
 import com.lgs.springboot.demo.mapper.UserMapper;
